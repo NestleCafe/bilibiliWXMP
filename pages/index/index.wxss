@@ -1,0 +1,16 @@
+page{
+	color: #666;
+}
+.navWrapper{}
+.navWrapper .nav{
+	white-space: nowrap;
+	padding: 5rpx 0;
+}
+.navWrapper .nav .navItem{
+	padding: 20rpx 45rpx;
+	font-size: 30prx;
+	display: inline-block;
+}
+.navItem.active{
+	border-bottom: 5rpx solid #de688b;
+}

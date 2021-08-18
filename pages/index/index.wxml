@@ -1,4 +1,14 @@
 <view class="main">
 	<!-- 公共头部 -->
 	<title></title>
+	<view class="navWrapper">
+		<scroll-view class="nav" scroll-x >
+			<view class="navItem {{index === currentIndexNav ? 'active' : ''}}" 
+				wx:for="{{navList}}" wx:key="index"
+				bindtap="selectNav(index)" data-index="{{index}}"
+				>
+				{{item.text}}
+			</view>
+		</scroll-view>
+	</view>
 </view>
