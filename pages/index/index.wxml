@@ -5,10 +5,42 @@
 		<scroll-view class="nav" scroll-x >
 			<view class="navItem {{index === currentIndexNav ? 'active' : ''}}" 
 				wx:for="{{navList}}" wx:key="index"
-				bindtap="selectNav(index)" data-index="{{index}}"
+				bindtap="selectNav" data-index="{{index}}"
 				>
 				{{item.text}}
 			</view>
 		</scroll-view>
 	</view>
+	
+	<view class="slides">
+		<swiper indicator-dots autoplay circular>
+			<swiper-item  wx:for="{{swiperList}}" wx:key="index">
+				<navigator>
+					<image mode="widthFix" src="{{item.imgSrc}}"></image>
+				</navigator>
+			</swiper-item>
+		</swiper>
+	</view>
+	
+	<view class="videoWrapper">
+		<navigator class="videoItem" wx:for="{{videoList}}" wx:key="index">
+			<view  class="videoImg">
+				<image mode="widthFix" src="{{item.imgSrc}}"></image>
+				<view class="videoInfo">
+					<view class="playCountWrapper">
+						<text class="fa fa-play-circle-o"></text>
+						<text class="playCount">{{item.playCount}}</text>
+					</view>
+					<view class="commentCountWrapper">
+						<text class="fa fa-comment-o"></text>
+						<text class="commentCount">{{item.commentCount}}</text>
+					</view>
+				</view>
+			</view>
+			<view class="videoTitle">
+				{{item.desc}}
+			</view>
+		</navigator>
+	</view>
+	
 </view>

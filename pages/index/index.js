@@ -6,30 +6,60 @@ Page({
   data: {
 	navList:[],	    /* 首页导航数据*/
 	currentIndexNav:0 , /* 首页导航菜单索引*/
+	swiperList: [], /*轮播图数据*/
+	videoList:[],
   },
-	selectNav(index){
+	selectNav(e){
 		this.setData({
-			currentIndexNav: index
+			currentIndexNav: e.target.dataset.index
 		})
 	},
-	getNavList(){
+	getVideoList(){
 		let that = this
 		wx.request({
-			url:"https://mockapi.eolinker.com/7b7NMB9c75d613bc39c8f16e4e03a3d4a8f951750079dc5/navList",
+			url:"http://mock-api.com/mnEe4VnJ.mock/videoList",
 			success(res){
 				if(res.data.code === 0){
 					that.setData({
-						navList: res.data.data.navList
+						videoList: res.data.data.videoList
 					})
 				}
 			}
 		})
+	},
+	getNavList(){
+			let that = this
+			wx.request({
+				url:"https://mockapi.eolinker.com/7b7NMB9c75d613bc39c8f16e4e03a3d4a8f951750079dc5/navList",
+				success(res){
+					if(res.data.code === 0){
+						that.setData({
+							navList: res.data.data.navList
+						})
+					}
+				}
+			})
+	},
+	getSwiperList(){
+			let that = this
+			wx.request({
+				url:"http://mock-api.com/mnEe4VnJ.mock/swiperList",
+				success(res){
+					if(res.data.code === 0){
+						that.setData({
+							swiperList: res.data.data.swiperList
+						})
+					}
+				}
+			})
 	},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.getNavList()
+	this.getSwiperList()
+	this.getVideoList()
   },
 
   /**
